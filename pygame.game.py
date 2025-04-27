@@ -25,7 +25,7 @@ albert_y = HEIGHT // 2
 albert_speed = 4
 
 seminole_arrow_width, seminole_arrow_height = 10, 40
-seminole_arrow_speed = 12
+seminole_arrow_speed = 8
 seminole_arrows = []
 
 score = 0
@@ -35,16 +35,17 @@ PLAYING = 1
 GAME_OVER = 2
 game_state = MAIN_MENU
 
+# Need to load the imaged before the loop instead of in the classes, otherwise the game becomes glitchy
+gator_image = pygame.image.load('florida-gators-2-logo-png-transparent.png').convert_alpha()
+gator_image = pygame.transform.scale(gator_image, (100,100))
+seminole_arrow_image = pygame.image.load('arrows-2-logo-png-transparent.png').convert_alpha()
+seminole_arrow_image = pygame.transform.scale(seminole_arrow_image, (80,60))
 
 def draw_albert_the_gator(x, y):
-    gator_image = pygame.image.load('florida-gators-2-logo-png-transparent.png').convert_alpha()
-    gator_image = pygame.transform.scale(gator_image, (100,100))
     screen.blit(gator_image, (x, y))
 
 
 def draw_seminole_arrow(x, y):
-    seminole_arrow_image = pygame.image.load('arrows-2-logo-png-transparent.png').convert_alpha()
-    seminole_arrow_image = pygame.transform.scale(seminole_arrow_image, (80,60))
     screen.blit(seminole_arrow_image, (x, y))
 
 
@@ -61,6 +62,9 @@ def reset_game():
     albert_x = 100
     albert_y = WIDTH // 2
     game_state = PLAYING
+
+def draw_finish_line():
+    pygame.draw.rect(screen, BLACK, 800, 10,)
 
 running = True
 while running:
