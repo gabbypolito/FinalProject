@@ -25,7 +25,7 @@ albert_y = HEIGHT // 2
 albert_speed = 4
 
 seminole_arrow_width, seminole_arrow_height = 10, 40
-seminole_arrow_speed = 7
+seminole_arrow_speed = 8
 seminole_arrows = []
 
 score = 0
@@ -86,40 +86,6 @@ while running:
         if random.randint(1, 25) == 1:
             arrow_y = random.randint(0, HEIGHT - seminole_arrow_height)
             seminole_arrows.append([WIDTH, arrow_y])
-
-        new_arrows = []
-        for arrow in seminole_arrows:
-            arrow[0] -= seminole_arrow_speed
-            if arrow[0] + seminole_arrow_width < 0:
-                score += 1
-            else:
-                new_arrows.append(arrow)
-        seminole_arrows = new_arrows
-
-        draw_albert_the_gator(albert_x, albert_y)
-        for arrow in seminole_arrows:
-            draw_seminole_arrow(arrow[0], arrow[1])
-
-        display_text(f"Score: {score}", 28, BLACK, 10, 10)
-
-        albert_rect = pygame.Rect(albert_x, albert_y, albert_width, albert_height)
-        for arrow in seminole_arrows:
-            try:
-                arrow_rect = pygame.Rect(arrow[0], arrow[1], seminole_arrow_width, seminole_arrow_height)
-                if albert_rect.colliderect(arrow_rect):
-                    game_state = GAME_OVER
-            except Exception as e:
-                print("Collision error:", e)
-                print("Problematic arrow:", arrow)
-    elif game_state == GAME_OVER:
-        display_text("Game Over", 50, RED, 280, 220)
-        display_text(f"Final Score: {score}", 32, BLACK, 290, 300)
-        display_text("Press SPACE to return to Menu", 24, BLACK, 240, 370)
-        if keys[pygame.K_SPACE]:
-            game_state = MAIN_MENU
-
-    pygame.display.flip()
-    clock.tick(FPS)
 
 
 
