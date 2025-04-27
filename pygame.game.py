@@ -117,15 +117,16 @@ while running:
 
         albert_rect = pygame.Rect(albert_x, albert_y, albert_width, albert_height)
         for arrow in seminole_arrows:
-            try:
+            if isinstance(arrow[0], (int, float)) and isinstance(arrow[1], (int, float)):
                 arrow_rect = pygame.Rect(arrow[0], arrow[1], seminole_arrow_width, seminole_arrow_height)
+
                 if albert_rect.colliderect(arrow_rect):
                     game_state = GAME_OVER
                 elif albert_rect.colliderect(finish_line_rect):
                     game_state = GAME_WIN
-            except Exception as e:
-                print("Collision error:", e)
-                print("Problematic arrow:", arrow)
+            else:
+                print("Invalid arrow data:", arrow)
+
     elif game_state == GAME_OVER:
         display_text("Game Over", 50, RED, 280, 220)
         display_text(f"Final Score: {score}", 32, BLACK, 290, 300)
