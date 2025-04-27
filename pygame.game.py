@@ -35,6 +35,7 @@ MAIN_MENU = 0
 PLAYING = 1
 GAME_OVER = 2
 game_state = MAIN_MENU
+GAME_WIN = 3
 
 
 # Need to load the imaged before the loop instead of in the classes, otherwise the game becomes glitchy
@@ -120,6 +121,8 @@ while running:
                 arrow_rect = pygame.Rect(arrow[0], arrow[1], seminole_arrow_width, seminole_arrow_height)
                 if albert_rect.colliderect(arrow_rect):
                     game_state = GAME_OVER
+                elif albert_rect.colliderect(finish_line_rect):
+                    game_state = GAME_WIN
             except Exception as e:
                 print("Collision error:", e)
                 print("Problematic arrow:", arrow)
@@ -129,10 +132,10 @@ while running:
         display_text("Press SPACE to return to Menu", 24, BLACK, 240, 370)
         if keys[pygame.K_SPACE]:
             game_state = MAIN_MENU
-
-    elif albert_rect.colliderect(finish_line_rect):
+    elif game_state == GAME_WIN:
         display_text("YOU SAVED ALBERT!", 50, GREEN, 280, 220)
         display_text("Press SPACE to return to Menu", 24, BLACK, 240, 370)
+
 
     pygame.display.flip()
     clock.tick(FPS)
