@@ -35,6 +35,7 @@ PLAYING = 1
 GAME_OVER = 2
 game_state = MAIN_MENU
 
+
 # Need to load the imaged before the loop instead of in the classes, otherwise the game becomes glitchy
 gator_image = pygame.image.load('florida-gators-2-logo-png-transparent.png').convert_alpha()
 gator_image = pygame.transform.scale(gator_image, (100,100))
@@ -63,8 +64,9 @@ def reset_game():
     albert_y = WIDTH // 2
     game_state = PLAYING
 
+finish_line_rect = pygame.Rect(760, 0, 40, 800)
 def draw_finish_line():
-    pygame.draw.rect(screen, BLACK, (760,0,40,800))
+    pygame.draw.rect(screen, BLACK, finish_line_rect)
 
 running = True
 while running:
@@ -126,6 +128,10 @@ while running:
         display_text("Press SPACE to return to Menu", 24, BLACK, 240, 370)
         if keys[pygame.K_SPACE]:
             game_state = MAIN_MENU
+
+    elif albert_rect.colliderect(finish_line_rect):
+        display_text("YOU SAVED ALBERT!", 50, GREEN, 280, 220)
+        display_text("Press SPACE to return to Menu", 24, BLACK, 240, 370)
 
     pygame.display.flip()
     clock.tick(FPS)
