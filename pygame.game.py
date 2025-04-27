@@ -25,7 +25,7 @@ albert_y = HEIGHT // 2
 albert_speed = 4
 
 seminole_arrow_width, seminole_arrow_height = 10, 40
-seminole_arrow_speed = 8
+seminole_arrow_speed = 12
 seminole_arrows = []
 
 score = 0
@@ -37,11 +37,15 @@ game_state = MAIN_MENU
 
 
 def draw_albert_the_gator(x, y):
-    pygame.draw.rect(screen, BLUE, (x, y, albert_width, albert_height))
+    gator_image = pygame.image.load('florida-gators-2-logo-png-transparent.png').convert_alpha()
+    gator_image = pygame.transform.scale(gator_image, (100,100))
+    screen.blit(gator_image, (x, y))
 
 
 def draw_seminole_arrow(x, y):
-    pygame.draw.rect(screen, RED, (x, y, seminole_arrow_width, seminole_arrow_height))
+    seminole_arrow_image = pygame.image.load('arrows-2-logo-png-transparent.png').convert_alpha()
+    seminole_arrow_image = pygame.transform.scale(seminole_arrow_image, (80,60))
+    screen.blit(seminole_arrow_image, (x, y))
 
 
 def display_text(text, size, color, x, y):
