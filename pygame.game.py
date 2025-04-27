@@ -64,11 +64,12 @@ def reset_game():
     game_state = PLAYING
 
 def draw_finish_line():
-    pygame.draw.rect(screen, BLACK, 800, 10,)
+    pygame.draw.rect(screen, BLACK, (760,0,40,800))
 
 running = True
 while running:
     screen.fill(WHITE)
+    draw_finish_line()
     keys = pygame.key.get_pressed()
 
     for event in pygame.event.get():
