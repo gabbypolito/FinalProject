@@ -1,6 +1,5 @@
 import pygame
 import random
-import sys
 
 # Initialize Pygame
 pygame.init()
@@ -26,7 +25,7 @@ albert_y = HEIGHT // 2
 albert_speed = 4
 
 seminole_arrow_width, seminole_arrow_height = 10, 40
-seminole_arrow_speed = 8
+seminole_arrow_speed = 6
 seminole_arrows = []
 
 score = 0
@@ -133,12 +132,14 @@ while running:
     elif game_state == GAME_OVER:
         display_text("Game Over", 50, RED, 280, 220)
         display_text(f"Final Score: {score}", 32, BLACK, 290, 300)
-        display_text("Press SPACE to return to Menu", 24, BLACK, 240, 370)
+        display_text("Press SPACE to restart", 24, BLACK, 240, 370)
         if keys[pygame.K_SPACE]:
             game_state = MAIN_MENU
     elif game_state == GAME_WIN:
         display_text("YOU SAVED ALBERTA!", 50, GREEN, 280, 220)
-        display_text("Press SPACE to return to Menu", 24, BLACK, 240, 370)
+        display_text("Press SPACE to restart", 24, BLACK, 240, 370)
+        if keys[pygame.K_SPACE]:
+            reset_game()
 
 
     pygame.display.flip()
