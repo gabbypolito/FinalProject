@@ -20,7 +20,7 @@ font = pygame.font.SysFont("arial", 36)
 clock = pygame.time.Clock()
 FPS = 60
 
-albert_width, albert_height = 60, 60
+albert_width, albert_height = 60, 60    #
 albert_x = 100
 albert_y = HEIGHT // 2
 albert_speed = 4
@@ -43,6 +43,8 @@ gator_image = pygame.image.load('florida-gators-2-logo-png-transparent.png').con
 gator_image = pygame.transform.scale(gator_image, (100,100))
 seminole_arrow_image = pygame.image.load('arrows-2-logo-png-transparent.png').convert_alpha()
 seminole_arrow_image = pygame.transform.scale(seminole_arrow_image, (80,60))
+finishline_image = pygame.image.load('finish_line.png').convert_alpha()
+finishline_image = pygame.transform.scale(finishline_image, (40,800))
 
 def draw_albert_the_gator(x, y):
     screen.blit(gator_image, (x, y))
@@ -68,7 +70,8 @@ def reset_game():
 
 finish_line_rect = pygame.Rect(760, 0, 40, 800)
 def draw_finish_line():
-    pygame.draw.rect(screen, BLACK, finish_line_rect)
+    screen.blit(finishline_image, finish_line_rect.topleft)
+
 
 running = True
 while running:
@@ -134,7 +137,7 @@ while running:
         if keys[pygame.K_SPACE]:
             game_state = MAIN_MENU
     elif game_state == GAME_WIN:
-        display_text("YOU SAVED ALBERT!", 50, GREEN, 280, 220)
+        display_text("YOU SAVED ALBERTA!", 50, GREEN, 280, 220)
         display_text("Press SPACE to return to Menu", 24, BLACK, 240, 370)
 
 
