@@ -177,7 +177,7 @@ while running:
             game_state = MAIN_MENU
 
     elif game_state == GAME_WIN:
-        display_text("YOU SAVED ALBERTA!", 50, GREEN, 280, 220)
+        display_text("YOU SAVED ALBERTA!", 50, GREEN, 150, 220)
         display_text("Press SPACE to restart", 24, BLACK, 240, 370)
         if keys[pygame.K_SPACE]:
             reset_game()
