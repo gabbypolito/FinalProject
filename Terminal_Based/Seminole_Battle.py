@@ -8,17 +8,17 @@ shield = Weapon("shield", 7, 15, 10)
 while True:
     difficulty = input("1. Easy\n2. Medium\n3. Hard\n\nChoose a Difficulty: ")
 
-    if difficulty == ("1" or "Easy" or "easy"):
+    if difficulty == "1" or "Easy" or "easy":
         player = Character(60)
         seminole = Enemy(50, 1)
         break
 
-    elif difficulty == ("2" or "Medium" or "medium"):
+    elif difficulty == "2" or "Medium" or "medium":
         player = Character(50)
         seminole = Enemy(55, 15)
         break
 
-    elif difficulty == ("3" or "Hard" or "hard"):
+    elif difficulty == "3" or "Hard" or "hard":
         player = Character(40)
         seminole = Enemy(60, 20)
         break
@@ -34,15 +34,15 @@ while True:
     print()
     weapon_choice = input("1. crossbow\n2. sword\n3. shield\n\nChoose a Weapon for Your Battle: ")
 
-    if weapon_choice == ("1" or "crossbow"):
+    if weapon_choice == "1" or "crossbow":
         weapon = crossbow
         break
 
-    elif weapon_choice == ("2" or "sword"):
+    elif weapon_choice == "2" or "sword":
         weapon = sword
         break
 
-    elif weapon_choice == ("3" or "shield"):
+    elif weapon_choice == "3" or "shield":
         weapon = shield
         break
 
@@ -60,7 +60,7 @@ while (seminole.health > 0) and (player.health > 0):
     attack = input("Do you wish to attack?(Y/N) ")
     print()
 
-    if attack == ("y" or "Y"):
+    if attack == "y" or "Y":
         damage_to_player = random.choice(range(seminole.attack)) + (seminole.attack - weapon.defense)
         damage_to_enemy = random.choice(range(weapon.attack)) + weapon.attack
 
@@ -76,7 +76,7 @@ while (seminole.health > 0) and (player.health > 0):
         print(f"THE Seminole Indian dealt {damage_to_player} damage, so you now have {player.health} health.")
         print(f"You dealt {damage_to_enemy} damage with your {weapon}, so THE Seminole Indian now has {seminole.health} health.")
 
-    elif attack == ("n" or "N"):
+    elif attack == "n" or "N":
         print("You do nothing. But why? Why would you do that?")
         damage_to_player = random.choice(range(seminole.attack)) + (seminole.attack - weapon.defense)
         player.take_damage(damage_to_player)
