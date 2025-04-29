@@ -110,11 +110,11 @@ But QUICK, you guys have been find out. Find you're way out of the hideout.""") 
             run = input("Your health is getting low. Do you wish to run?(Y/N) ")
             print()
 
-            if run == ("y" or "Y"):
+            if run == "y" or "Y":
                 print("Wow. Pretty messed up. I know you only had " + str(player.health), "health, but still.")
                 print("Well, you run away and never see Albert and Alberta again. UF has deemed you a traitor.")
                 print("\nThe Unsatisfying Ending")
                 break
 
-            elif run == ("n" or "N"):
+            elif run == "n" or "N":
                 print("Very brave. Very admirable. You keep on fighting.")
