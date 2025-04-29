@@ -1,4 +1,4 @@
-from Weapons import *
+from classes import *
 import random
 
 crossbow = Weapon("crossbow", 10, 8, 15)
