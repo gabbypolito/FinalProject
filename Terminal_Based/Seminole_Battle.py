@@ -6,11 +6,16 @@ sword = Weapon("sword", 15, 10, 5)
 shield = Weapon("shield", 7, 15, 10)
 
 while True:
+    """
+    Ensures the player chooses a difficulty level.
+    
+    Difficulty level decides player health and enemy health and attack.
+    """
     difficulty = input("1. Easy\n2. Medium\n3. Hard\n\nChoose a Difficulty: ")
 
     if difficulty == "1" or "Easy" or "easy":
         player = Character(60)
-        seminole = Enemy(50, 1)
+        seminole = Enemy(50, 13)
         break
 
     elif difficulty == "2" or "Medium" or "medium":
@@ -31,6 +36,12 @@ print()
 print("OH NO, Alberta was kidnapped by the Seminoles. Albert has hired you to save her.")
 
 while True:
+    """
+    Ensures the player chooses a weapon.
+
+    Each weapon has a unique attack, defense, and speed value.
+    Weapons are classed before the first loop.
+    """
     print()
     weapon_choice = input("1. crossbow\n2. sword\n3. shield\n\nChoose a Weapon for Your Battle: ")
 
@@ -56,6 +67,9 @@ print()
 print(f"THE Seminole Indian has {seminole.health} health.")
 print(f"You have {player.health} health.")
 while (seminole.health > 0) and (player.health > 0):
+    """
+    Battle loop: This contains all the code for battling the enemy and dictates how the game ends.
+    """
     print()
     attack = input("Do you wish to attack?(Y/N) ")
     print()
@@ -97,7 +111,7 @@ while (seminole.health > 0) and (player.health > 0):
             break
         print()
         print("""GOOD JOB, YOU DID IT, YOU'RE AWESOME. Albert has saved Alberta.
-But QUICK, you guys have been find out. Find you're way out of the hideout.""")     # This leads into the pygame
+But QUICK, you guys have been found out. Now find you're way out of the hideout.""")        # This leads into the pygame
 
     elif player.health <= 15:
         if player.health <= 0:
