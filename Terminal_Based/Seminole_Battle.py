@@ -67,9 +67,7 @@ print()
 print(f"THE Seminole Indian has {seminole.health} health.")
 print(f"You have {player.health} health.")
 while (seminole.health > 0) and (player.health > 0):
-    """
-    Battle loop: This contains all the code for battling the enemy and dictates how the game ends.
-    """
+    """Battle loop: This contains all the code for battling the enemy and dictates how the game ends."""
     print()
     attack = input("Do you wish to attack?(Y/N) ")
     print()
